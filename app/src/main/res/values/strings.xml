@@ -2,5 +2,12 @@
     <string name="app_name">GitHub Users</string>
     <string name="avatar">avatar</string>
     <string name="login">login: %1$s</string>
+    <string name="name">name: %1$s</string>
     <string name="id">id: %1$s</string>
+    <string name="email">email: %1$s</string>
+    <string name="company">company: %1$s</string>
+    <string name="followingCount">following count: %1$s</string>
+    <string name="followersCount">followers count: %1$s</string>
+    <string name="createdAt">created at: %1$s</string>
+    <string name="loading">loading…</string>
 </resources>

@@ -39,7 +39,9 @@ class MainFragment : Fragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 println("getData=$it")
-                binding.usersList.adapter = Adapter(it, requireContext())
+                binding.usersList.adapter = Adapter(it, requireContext()){
+                    (activity as? MainActivity)?.addFragment(SingleUserFragment.newIntent(it.login))
+                }
             }, { error ->
                 Log.e("UserListViewModel", error.toString())
             })

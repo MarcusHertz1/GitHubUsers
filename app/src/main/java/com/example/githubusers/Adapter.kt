@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubusers.databinding.UserListItemBinding
 
-class Adapter (private var itemsList: MutableList<UsersDataClass>, private val context:Context): RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter (private var itemsList: MutableList<UsersDataClass>, private val context:Context, val clickListener: (UsersDataClass) -> Unit): RecyclerView.Adapter<Adapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: UserListItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -32,6 +32,10 @@ class Adapter (private var itemsList: MutableList<UsersDataClass>, private val c
                     .into(binding.avatar)
                 binding.title.text = context.getString(R.string.login, login)
                 binding.subtitle.text = context.getString(R.string.id, id.toString())
+
+                itemView.setOnClickListener {
+                    clickListener(itemsList[position])
+                }
             }
         }
     }
