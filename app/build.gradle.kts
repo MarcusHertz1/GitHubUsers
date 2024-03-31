@@ -66,6 +66,5 @@ dependencies {
     implementation(libs.rxjava)
     implementation(libs.rxandroid)
     implementation(libs.adapter.rxjava2)
-
-
+    implementation (libs.androidx.swiperefreshlayout)
 }

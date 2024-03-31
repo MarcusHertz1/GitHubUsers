@@ -12,6 +12,7 @@ material = "1.11.0"
 glide = "4.16.0"
 rxandroid = "2.1.1"
 rxjava = "2.2.17"
+swiperefreshlayout = "1.1.0"
 
 
 retrofit = "2.9.0"
@@ -22,6 +23,7 @@ constraintlayout = "2.1.4"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

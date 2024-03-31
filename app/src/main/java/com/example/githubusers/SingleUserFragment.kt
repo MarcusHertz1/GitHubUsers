@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -41,10 +42,18 @@ class SingleUserFragment: Fragment()  {
     @SuppressLint("CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.swipeRefreshLayout.isRefreshing = true
         val login = this.arguments?.getString(LOGIN)
         println("login=$login")
         binding.title.text = getString(R.string.name, getString(R.string.loading))
         binding.subtitle.text = getString(R.string.email, getString(R.string.loading))
+        setSingleUserDate(login)
+        binding.swipeRefreshLayout.setOnRefreshListener{
+            setSingleUserDate(login)
+        }
+    }
+    @SuppressLint("CheckResult")
+    private fun setSingleUserDate(login: String?){
         if(login!=null) {
             val getSingleUserDate = viewModel.getSingleUserDate(login)
             getSingleUserDate
@@ -65,12 +74,14 @@ class SingleUserFragment: Fragment()  {
                             .appendLine(getString(R.string.followersCount, result.followers.toString()))
                             .appendLine(getString(R.string.createdAt, result.createdAt))
                         binding.text.text = textBuilder.toString()
+                        binding.swipeRefreshLayout.isRefreshing = false
                     },
                     { error ->
-                        Log.e("UserListViewModel", error.toString())
+                        Toast.makeText(requireContext(), error.toString(), Toast.LENGTH_SHORT).show()
+                        Log.e("UsersListViewModel", error.toString())
+                        binding.swipeRefreshLayout.isRefreshing = false
                     }
                 )
         }
     }
-
 }
